@@ -6,3 +6,8 @@ function calcularSoma() {
 
     document.getElementById("resultado").innerHTML = total;
 }
+
+// push() = add um item no final
+// pop() = remove do final
+// unshift() = add um element no início
+// shift() = remove do inicio
