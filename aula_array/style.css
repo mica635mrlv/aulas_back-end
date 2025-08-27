@@ -13,6 +13,9 @@ ol {
 
 :root {
     --font-padrao: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    --principal-color: pink;
+    --segudary-color: rgb(255, 108, 152);
+    --border-color: white;
 }
 
 body {
@@ -20,7 +23,7 @@ body {
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: pink;
+    background-color: var(--principal-color);
     font-family: var(--font-padrao);
 }
 
@@ -37,13 +40,13 @@ body {
     width: 400px;
     height: 400px;
     gap: 15px;
-    background-color: rgb(255, 108, 152);
+    background-color: var(--segudary-color);
 }
 
 .container-form input {
     height: 30px;
-    width: 180px;
-    border: 1px solid pink;
+    width: 205px;
+    border: 1px solid var(--principal-color);
     border-radius: 8px;
     text-align: center;
     font-size: 15px;
@@ -53,15 +56,26 @@ body {
 .container-form button {
     height: 30px;
     width: 80px;
-    background-color: pink;
-    border: 1px solid white;
+    background-color: var(--principal-color);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     font-family: var(--font-padrao);
 }
 
 .container-form ul {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.container-form li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: white;
-    width: 80px;
-    height: 30px;
     border-radius: 8px;
+    width: 290px;
+    border: 1px solid var(--principal-color);
+    padding-left: 8px;
+    gap: 5px;
 }
