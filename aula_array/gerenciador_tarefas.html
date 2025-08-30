@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -9,73 +9,73 @@
 </head>
 
 <body>
+
     <div class="container-form">
         <h1>Minhas Tarefas</h1>
         <form id="form-tarefa">
             <input type="text" id="inputTarefa" placeholder="Digite o nome da tarefa">
             <button type="submit">Adicionar</button>
-        </form> 
-            <h2>Lista de Tarefas</h2>
-            <ul id="listaTarefas"></ul>
+        </form>
+        <h2>Lista de Tarefas</h2>
+        <ul id="listaTarefas"></ul>
     </div>
 
     <script>
-        let lista = ["Estudar JS", "Estudar BD", "Estudar Redes"]
-
+        let lista = ["Estudar JS", "Estudar BD", "Estudar Redes"];
         const form = document.getElementById("form-tarefa");
         const input = document.getElementById("inputTarefa");
         const ul = document.getElementById("listaTarefas");
 
         // Função p/ renderizar a lista na tela
         function atualizarLista() {
-
-            // limpa a lista
-            ul.innerHTML = "";
-
+            ul.innerHTML = ""; // limpa a lista
             lista.forEach((tarefa, index) => {
-                let li = document.createElement("li")
+                let li = document.createElement("li");
                 li.textContent = tarefa;
 
+                // Criar a div para os botões
+                let divBotoes = document.createElement("div");
+                divBotoes.className = "botoes";
+
                 // Botão editar
-                let bntEditar = document.createElement("button");
-                bntEditar.textContent = "Editar";
-
-                bntEditar.onclick = () => {
+                let btnEditar = document.createElement("button");
+                btnEditar.textContent = "Editar";
+                btnEditar.onclick = () => {
                     let novoNome = prompt("Digite o novo nome da tarefa: ");
-
                     if (novoNome) {
                         lista[index] = novoNome;
                         atualizarLista();
                     }
-                } // Fim do onclick do editar
+                };
 
                 // Botão remover
                 let btnRemover = document.createElement("button");
                 btnRemover.textContent = "Remover";
-
                 btnRemover.onclick = () => {
-                    lista.splice(index, 1)
+                    lista.splice(index, 1);
                     atualizarLista();
-                }
+                };
 
-                // Adicionar o botões no li
-                li.appendChild(bntEditar);
-                li.appendChild(btnRemover);
+                // Adicionar os botões à div
+                divBotoes.appendChild(btnEditar);
+                divBotoes.appendChild(btnRemover);
 
-                // Adicionar o botão no ul
+                // Adicionar a div ao li
+                li.appendChild(divBotoes);
+
+                // Adicionar li ao ul
                 ul.appendChild(li);
-
             });
-        } // Fim da função atualizar lista
+        }
 
         // Evento para adicionar uma tarefa
         form.addEventListener("submit", function (event) {
             event.preventDefault();
-
-            // Add uma tarefa ao array
-            lista.push(input.value);
-            input.value = "";
-            atualizarLista();
+            if (input.value.trim() !== "") {
+                lista.push(input.value.trim());
+                input.value = "";
+                atualizarLista();
+            }
         });
 
         // Renderizar a lista inicial
